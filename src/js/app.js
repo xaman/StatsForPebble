@@ -8,23 +8,16 @@ var mURL;
 function saveConfig(config) {
 	if (config) {
 		console.log(config);
-		// Save URL
-		var url = config.url;
-		if (url) {
-			localStorage.setItem(KEY_URL, url);
-			mURL = url;
+		if (config.url) {
+			localStorage.setItem(KEY_URL, config.url);
+			mURL = config.url;
 		}
 	}
 }
 
 function loadConfig() {
-	// Load URL
 	var url = localStorage.getItem(KEY_URL);
-	if (url) {
-		mURL = url;
-	} else {
-		mURL = DEMO_URL;
-	}
+	mURL = url ? url : DEMO_URL;
 }
 
 function requestStats() {
@@ -50,18 +43,18 @@ function requestStats() {
 function sendStatsToPebble(json) {
 	var dictionary = {
 		"KEY_ICON_0" : json.data[0].icon,
-		"KEY_COLOR_0" : GColorFromHex(json.data[0].color),
+		"KEY_COLOR_0" : convertHexToGColor(json.data[0].color),
 		"KEY_VALUE_0" : json.data[0].value,
 		"KEY_ICON_1" : json.data[1].icon,
-		"KEY_COLOR_1" : GColorFromHex(json.data[1].color),
+		"KEY_COLOR_1" : convertHexToGColor(json.data[1].color),
 		"KEY_VALUE_1" : json.data[1].value,
 		"KEY_ICON_2" : json.data[2].icon,
-		"KEY_COLOR_2" : GColorFromHex(json.data[2].color),
+		"KEY_COLOR_2" : convertHexToGColor(json.data[2].color),
 		"KEY_VALUE_2" : json.data[2].value,
 		"KEY_ICON_3" : json.data[3].icon,
-		"KEY_COLOR_3" : GColorFromHex(json.data[3].color),
+		"KEY_COLOR_3" : convertHexToGColor(json.data[3].color),
 		"KEY_VALUE_3" : json.data[3].value,
-		"KEY_BACKGROUND_COLOR" : GColorFromHex(json.background_color),
+		"KEY_BACKGROUND_COLOR" : convertHexToGColor(json.background_color),
 		"KEY_VIBRATION" : json.vibration
 	};
 	sendDictionaryToPebble(dictionary);
@@ -79,7 +72,7 @@ function sendDictionaryToPebble(dictionary) {
 	);
 }
 
-function GColorFromHex(hex) {
+function convertHexToGColor(hex) {
 	hex = hex.replace('#', '');
     var hexNum = parseInt(hex, 16);
     var a = 192;
@@ -87,7 +80,6 @@ function GColorFromHex(hex) {
     var g = (((hexNum >>  8) & 0xFF) >> 6) << 2;
     var b = (((hexNum >>  0) & 0xFF) >> 6) << 0;
 	var color = a + r + g + b;
-	// console.log("HexToColor: " + hex + " -> " + color);
     return color;
 }
 
