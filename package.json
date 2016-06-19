@@ -29,24 +29,28 @@
         "resources": {
             "media": [
                 {
-                    "file": "images/market.png",
-                    "name": "ICON_MARKET",
-                    "type": "png-trans"
+                    "file": "images/delivery.png",
+                    "name": "ICON_DELIVERY",
+                    "targetPlatforms": null,
+                    "type": "bitmap"
                 },
                 {
                     "file": "images/dollar.png",
                     "name": "ICON_DOLLAR",
-                    "type": "png-trans"
+                    "targetPlatforms": null,
+                    "type": "bitmap"
                 },
                 {
                     "file": "images/money.png",
                     "name": "ICON_MONEY",
-                    "type": "png-trans"
+                    "targetPlatforms": null,
+                    "type": "bitmap"
                 },
                 {
                     "file": "images/cart.png",
                     "name": "ICON_CART",
-                    "type": "png-trans"
+                    "targetPlatforms": null,
+                    "type": "bitmap"
                 },
                 {
                     "file": "fonts/font-monkirta.ttf",

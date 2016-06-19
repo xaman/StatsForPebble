@@ -3,9 +3,9 @@
 
 	
 #define ICON_CART "cart"
-#define ICON_DOLLAR "dollar"
-#define ICON_MARKET "market"
+#define ICON_DELIVERY "delivery"
 #define ICON_MONEY "money"
+#define ICON_DOLLAR "dollar"
 	
 	
-void set_icon_from_id(BitmapLayer* white_layer, BitmapLayer* black_layer, char *id);
+void set_icon_from_id(BitmapLayer* layer, char *id);

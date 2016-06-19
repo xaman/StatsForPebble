@@ -9,8 +9,7 @@ static Window *s_main_window;
 // Layers
 static TextLayer *s_time_layer;
 static Layer *s_header_background_layer;
-static BitmapLayer *s_white_icons[MAX_STATS];
-static BitmapLayer *s_black_icons[MAX_STATS];
+static BitmapLayer *s_icons[MAX_STATS];
 static TextLayer *s_texts[MAX_STATS];
 static TextLayer *s_loading_text;
 // Fonts
@@ -103,10 +102,8 @@ static BitmapLayer * get_icon_layer(int x, int y, int size) {
 }
 
 static void initialize_icon(Layer *window_layer, int x, int y, int position) {
-	s_white_icons[position] = get_icon_layer(x, y, ICON_SIZE);
-	layer_add_child(window_layer, bitmap_layer_get_layer(s_white_icons[position]));
-	s_black_icons[position] = get_icon_layer(x, y, ICON_SIZE);
-	layer_add_child(window_layer, bitmap_layer_get_layer(s_black_icons[position]));
+	s_icons[position] = get_icon_layer(x, y, ICON_SIZE);
+	layer_add_child(window_layer, bitmap_layer_get_layer(s_icons[position]));
 }
 
 static void initialize_icons(Layer *window_layer) {
@@ -216,10 +213,10 @@ static unsigned int find_int(DictionaryIterator *iterator, const uint32_t key) {
 */
 static void inbox_received_callback(DictionaryIterator *iterator, void *context) {
 	// Set icons
-	set_icon_from_id(s_white_icons[0], s_black_icons[0], find_string(iterator, FIRST_ICON));
-	set_icon_from_id(s_white_icons[1], s_black_icons[1], find_string(iterator, SECOND_ICON));
-	set_icon_from_id(s_white_icons[2], s_black_icons[2], find_string(iterator, THIRD_ICON));
-	set_icon_from_id(s_white_icons[3], s_black_icons[3], find_string(iterator, FOURTH_ICON));
+	set_icon_from_id(s_icons[0], find_string(iterator, FIRST_ICON));
+	set_icon_from_id(s_icons[1], find_string(iterator, SECOND_ICON));
+	set_icon_from_id(s_icons[2], find_string(iterator, THIRD_ICON));
+	set_icon_from_id(s_icons[3], find_string(iterator, FOURTH_ICON));
 	// Set text colors
 	set_text_color(s_texts[0], find_int(iterator, FIRST_COLOR));
 	set_text_color(s_texts[1], find_int(iterator, SECOND_COLOR));
