@@ -1,2 +1,2 @@
-# StatsForPebble
-A Pebble Watchface to see stats from your server
+# Stats for Pebble
+A Pebble watchface to show statistics from your server
