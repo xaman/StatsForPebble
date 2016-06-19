@@ -2,35 +2,50 @@ var CONFIG_URL = "http://martinchamarro.com/pebble/stats/settings.html";
 var WEBVIEW_CANCELLED = "CANCELLED";
 var DEMO_URL = "http://martinchamarro.com/pebble/stats/demo.json";
 var KEY_URL = "url";
+var KEY_INTERVAL = "interval";
+var DEFAULT_INTERVAL = 30;
 
 var url;
+var interval;
 
 function saveConfig(config) {
 	if (config) {
-		console.log(config);
-		if (config.url) {
-			localStorage.setItem(KEY_URL, config.url);
-			url = config.url;
-		}
+		saveUrl(config);
+		saveInterval(config);
+	}
+}
+
+function saveUrl(config) {
+	if (config.url) {
+		localStorage.setItem(KEY_URL, config.url);
+		url = config.url;
+	}
+}
+
+function saveInterval(config) {
+	if (config.interval) {
+		localStorage.setItem(KEY_INTERVAL, config.interval);
+		interval = config.interval;
 	}
 }
 
 function loadConfig() {
 	var loadedUrl = localStorage.getItem(KEY_URL);
 	url = loadedUrl ? loadedUrl : DEMO_URL;
+	var loadedInterval = localStorage.getItem(KEY_INTERVAL);
+	interval = loadedInterval ? loadedInterval : DEFAULT_INTERVAL;
 }
 
 function requestStats() {
 	if (url) {
 		var xmlhttp = new XMLHttpRequest();
 		xmlhttp.open("GET", url, true);
-		xmlhttp.setRequestHeader("User-Agent", "Stats for Pebble 1.0");
 		xmlhttp.onreadystatechange = function() {
 			if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
 				try {
 					console.log(xmlhttp.responseText);
 					var json = JSON.parse(xmlhttp.responseText);
-					sendStatsToPebble(json);
+					sendInfoToWatchface(json);
 				} catch (err) {
 					console.log("Error loadings stats: " + err.message);
 				}
@@ -40,7 +55,7 @@ function requestStats() {
 	}
 }
 
-function sendStatsToPebble(json) {
+function sendInfoToWatchface(json) {
 	var dictionary = {
 		"FIRST_ICON" : json.data[0].icon,
 		"FIRST_COLOR" : convertHexToGColor(json.data[0].color),
@@ -55,13 +70,14 @@ function sendStatsToPebble(json) {
 		"FOURTH_COLOR" : convertHexToGColor(json.data[3].color),
 		"FOURTH_VALUE" : json.data[3].value,
 		"BACKGROUND_COLOR" : convertHexToGColor(json.background_color),
-		"VIBRATION" : json.vibration
+		"VIBRATION" : json.vibration,
+		"INTERVAL" : parseInt(interval)
 	};
-	sendDictionaryToPebble(dictionary);
+	sendDictionaryToWatchface(dictionary);
 }
 
-function sendDictionaryToPebble(dictionary) {
-	console.log("Sending dictionary: " + dictionary);
+function sendDictionaryToWatchface(dictionary) {
+	console.log("Sending dictionary: " + JSON.stringify(dictionary));
 	Pebble.sendAppMessage(dictionary,
 		function(e) {
 			console.log("Dictionary sent to Pebble successfully!");
@@ -95,7 +111,9 @@ Pebble.addEventListener('ready',
 // Listen for when an AppMessage is received
 Pebble.addEventListener('appmessage',
 	function(e) {
-		console.log("AppMessage received!");
+		console.log("Watchface message received!");
+		loadConfig();
+		requestStats();
 	}
 );
 
@@ -111,6 +129,7 @@ Pebble.addEventListener("webviewclosed",
 			console.log("Callback to save settings: " + e.response);
 			var config = JSON.parse(e.response);
 			saveConfig(config);
+			requestStats();
 		}
 	}
 );

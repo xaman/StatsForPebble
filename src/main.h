@@ -1,8 +1,7 @@
 #pragma once
 	
-
-#define HALF_HOUR 30
 #define COLOR_BLACK 192
+#define HALF_HOUR 30
 
 #define SCREEN_WIDTH 144
 #define SCREEN_HEIGHT 168
@@ -29,3 +28,4 @@
 #define FOURTH_VALUE 11
 #define BACKGROUND_COLOR 12
 #define VIBRATION 13
+#define INTERVAL 14
