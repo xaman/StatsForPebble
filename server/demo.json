@@ -1,0 +1,26 @@
+{
+	"vibration" : "short",
+	"background_color" : "#69B76B",
+	"data" : [
+		{
+			"icon" : "cart",
+			"color" : "#FFFFFF",
+			"value" : "73"
+		},
+		{
+			"icon" : "dollar",
+			"color" : "#FFFFFF",
+			"value" : "3.456"
+		},
+		{
+			"icon" : "delivery",
+			"color" : "#FFFFFF",
+			"value" : "254"
+		},
+		{
+			"icon" : "money",
+			"color":"#FFFFFF",
+			"value" : "18K"
+		}
+	]
+}

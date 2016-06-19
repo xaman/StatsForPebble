@@ -1,0 +1,97 @@
+<html>
+	<head>
+		<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+		<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+		<style type="text/css">
+			h1 {
+				width: 100%;
+				text-align: center;
+			}
+			#container {
+				text-align: center;
+			}
+			body {
+				background-color: #E9EAED;
+			}
+			input {
+				width: 260px;
+				margin-top: 10px;
+				padding: 5px;
+				border-radius: 5px;
+				border-color: #DADADA;
+				border-width: 1px;
+			}
+			#submit {
+				width: 170px;
+				height: 40px;
+				margin-top: 10px;
+				color: #FFFFFF;
+				background-color: #7A7A7A;
+				border-radius: 5px;
+				border-color: #6C6C6C;
+				border-width: 1px;
+				font-family: "Lucida Grande", Geneva, Verdana, Arial, Helvetica, sans-serif;
+    			font-size: 15px;
+    			font-weight: bold;
+				text-align: center;
+			}
+			.block {
+				text-align: left;
+			}
+			.center {
+			    margin: 20px auto auto auto;
+			}
+			.left {
+			    margin: 20px 0 auto 0;
+			}
+			.right {
+			    margin: 20px 0 auto auto;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="container" style="margin:50px;">
+
+			<h1>Stats</h1>
+			<div class="block left">
+				<h3 style="margin-top: 30px;">Settings</h3>
+
+                <label for="url_input" type="url">URL of the stats:</label><br>
+		 		<input type="text" name="url" id="url" placeholder='http://martinchamarro.com/pebble/stats/demo.json' /><br><br>
+
+		 		<label for="interval_input" type="number">Interval of refresh:</label><br>
+		 		<input type="text" name="interval" id="interval" placeholder='(In minutes)' />
+
+	 		</div>
+	 		<button name="submit" id="submit">Save changes</button>
+		 	<script type="text/javascript">
+
+		 		$().ready(function () {
+		 			// Load previous URL
+		 			var url = localStorage.getItem("url");
+		 			$("#url").val(url);
+                    var interval = localStorage.getItem("interval");
+                    $("#interval").val(interval);
+				});
+
+				// Capture form submit
+		 		$("#submit").click(function(e) {
+                    // Save form values
+		 			var url = $("#url").val();
+		 			localStorage.setItem("url", url);
+                    var interval = $("#interval").val();
+                    localStorage.setItem("interval", interval);
+                    // Close settings
+		 			closeSettings(url, interval);
+    				e.preventDefault();
+		 		});
+
+		 		function closeSettings(url, interval) {
+		 			var values = { "url" : url, "interval" : interval };
+		 			window.location.href = "pebblejs://close#" + JSON.stringify(values);
+		 		}
+
+		 	</script>
+	 	</div>
+	</body>
+</html>
