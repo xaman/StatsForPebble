@@ -10,7 +10,7 @@ static Window *main_window;
 static TextLayer *time_layer;
 static Layer *header_background_layer;
 static BitmapLayer *icons[MAX_STATS];
-static TextLayer *texts[MAX_STATS];
+static TextLayer *text_layers[MAX_STATS];
 static TextLayer *loading_text;
 // Fonts
 static GFont time_font;
@@ -114,11 +114,11 @@ static void initialize_icons(Layer *window_layer) {
 }
 
 static void initialize_text(Layer *window_layer, int x, int y, int position) {
-	texts[position] = text_layer_create(GRect(x, y, SCREEN_WIDTH / 2, TEXT_HEIGHT));
-	text_layer_set_font(texts[position], text_font);
-	text_layer_set_background_color(texts[position], GColorClear);
-	text_layer_set_text_alignment(texts[position], GTextAlignmentCenter);
-	layer_add_child(window_layer, text_layer_get_layer(texts[position]));
+	text_layers[position] = text_layer_create(GRect(x, y, SCREEN_WIDTH / 2, TEXT_HEIGHT));
+	text_layer_set_font(text_layers[position], text_font);
+	text_layer_set_background_color(text_layers[position], GColorClear);
+	text_layer_set_text_alignment(text_layers[position], GTextAlignmentCenter);
+	layer_add_child(window_layer, text_layer_get_layer(text_layers[position]));
 }
 
 /*
@@ -218,15 +218,15 @@ static void inbox_received_callback(DictionaryIterator *iterator, void *context)
 	set_icon_from_id(icons[2], find_string(iterator, THIRD_ICON));
 	set_icon_from_id(icons[3], find_string(iterator, FOURTH_ICON));
 	// Set text colors
-	set_text_color(texts[0], find_int(iterator, FIRST_COLOR));
-	set_text_color(texts[1], find_int(iterator, SECOND_COLOR));
-	set_text_color(texts[2], find_int(iterator, THIRD_COLOR));
-	set_text_color(texts[3], find_int(iterator, FOURTH_COLOR));
+	set_text_color(text_layers[0], find_int(iterator, FIRST_COLOR));
+	set_text_color(text_layers[1], find_int(iterator, SECOND_COLOR));
+	set_text_color(text_layers[2], find_int(iterator, THIRD_COLOR));
+	set_text_color(text_layers[3], find_int(iterator, FOURTH_COLOR));
 	// Set values
-	set_text_value(texts[0], find_string(iterator, FIRST_VALUE));
-	set_text_value(texts[1], find_string(iterator, SECOND_VALUE));
-	set_text_value(texts[2], find_string(iterator, THIRD_VALUE));
-	set_text_value(texts[3], find_string(iterator, FOURTH_VALUE));
+	set_text_value(text_layers[0], find_string(iterator, FIRST_VALUE));
+	set_text_value(text_layers[1], find_string(iterator, SECOND_VALUE));
+	set_text_value(text_layers[2], find_string(iterator, THIRD_VALUE));
+	set_text_value(text_layers[3], find_string(iterator, FOURTH_VALUE));
 	// Set background color
 	set_background_color(main_window, find_int(iterator, BACKGROUND_COLOR));
 	// Check vibration
