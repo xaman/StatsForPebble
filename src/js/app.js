@@ -3,27 +3,27 @@ var WEBVIEW_CANCELLED = "CANCELLED";
 var DEMO_URL = "http://martinchamarro.com/pebble/stats/demo.json";
 var KEY_URL = "url";
 
-var mURL;
+var url;
 
 function saveConfig(config) {
 	if (config) {
 		console.log(config);
 		if (config.url) {
 			localStorage.setItem(KEY_URL, config.url);
-			mURL = config.url;
+			url = config.url;
 		}
 	}
 }
 
 function loadConfig() {
-	var url = localStorage.getItem(KEY_URL);
-	mURL = url ? url : DEMO_URL;
+	var loadedUrl = localStorage.getItem(KEY_URL);
+	url = loadedUrl ? loadedUrl : DEMO_URL;
 }
 
 function requestStats() {
-	if (mURL) {
+	if (url) {
 		var xmlhttp = new XMLHttpRequest();
-		xmlhttp.open("GET", mURL, true);
+		xmlhttp.open("GET", url, true);
 		xmlhttp.setRequestHeader("User-Agent", "Stats for Pebble 1.0");
 		xmlhttp.onreadystatechange = function() {
 			if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {

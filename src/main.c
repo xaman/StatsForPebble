@@ -5,16 +5,16 @@
 #include "main.h"
 	
 // GUI
-static Window *s_main_window;
+static Window *main_window;
 // Layers
-static TextLayer *s_time_layer;
-static Layer *s_header_background_layer;
-static BitmapLayer *s_icons[MAX_STATS];
-static TextLayer *s_texts[MAX_STATS];
-static TextLayer *s_loading_text;
+static TextLayer *time_layer;
+static Layer *header_background_layer;
+static BitmapLayer *icons[MAX_STATS];
+static TextLayer *texts[MAX_STATS];
+static TextLayer *loading_text;
 // Fonts
-static GFont s_time_font;
-static GFont s_text_font;
+static GFont time_font;
+static GFont text_font;
 
 /*
 *
@@ -34,30 +34,30 @@ static void update_time() {
 		strftime(buffer, sizeof("00:00"), "%I:%M", tick_time);
 	}
 	// Display this time on the TextLayer
-	text_layer_set_text(s_time_layer, buffer);
+	text_layer_set_text(time_layer, buffer);
 }
 
 
 static void initialize_main_window() {
-	s_main_window = window_create();
+	main_window = window_create();
 }
 
 static void set_background_color(Window *window, unsigned int color) {
     GColor col = (GColor){.argb = color};
 	#ifdef PBL_COLOR
-		window_set_background_color(s_main_window, col);
+		window_set_background_color(main_window, col);
 	#else
 		// Force black and white for Aplite Pebbles
 		if (color != GColorBlack.argb) {
 			col = GColorWhite;
 		}
-		window_set_background_color(s_main_window, col);
+		window_set_background_color(main_window, col);
 	#endif
 }
 
 static void load_custom_fonts() {
-	s_time_font = fonts_load_custom_font(resource_get_handle(RESOURCE_ID_FONT_MONKIRTA_40));
-	s_text_font = fonts_load_custom_font(resource_get_handle(RESOURCE_ID_FONT_MONKIRTA_20));
+	time_font = fonts_load_custom_font(resource_get_handle(RESOURCE_ID_FONT_MONKIRTA_40));
+	text_font = fonts_load_custom_font(resource_get_handle(RESOURCE_ID_FONT_MONKIRTA_20));
 }
 
 static void update_header_background(Layer *layer, GContext *ctx) {
@@ -66,35 +66,35 @@ static void update_header_background(Layer *layer, GContext *ctx) {
 }
 
 static void initialize_header_background_layer(Layer *window_layer) {
-	s_header_background_layer = layer_create(GRect(0, 0, SCREEN_WIDTH, HEADER_BACKGROUND_HEIGHT));
-	layer_set_update_proc(s_header_background_layer, update_header_background);
+	header_background_layer = layer_create(GRect(0, 0, SCREEN_WIDTH, HEADER_BACKGROUND_HEIGHT));
+	layer_set_update_proc(header_background_layer, update_header_background);
 	// Add to parent layer
-	layer_add_child(window_layer, s_header_background_layer);
+	layer_add_child(window_layer, header_background_layer);
 }
 
 static void initialize_time_layer(Layer *window_layer) {
-	s_time_layer = text_layer_create(GRect(0, TIME_LAYER_TOP_MARGIN, SCREEN_WIDTH, TIME_LAYER_HEIGHT));
-	text_layer_set_font(s_time_layer, s_time_font);
-	text_layer_set_background_color(s_time_layer, GColorClear);
-	text_layer_set_text_color(s_time_layer, GColorWhite);
-	text_layer_set_text_alignment(s_time_layer, GTextAlignmentCenter);
+	time_layer = text_layer_create(GRect(0, TIME_LAYER_TOP_MARGIN, SCREEN_WIDTH, TIME_LAYER_HEIGHT));
+	text_layer_set_font(time_layer, time_font);
+	text_layer_set_background_color(time_layer, GColorClear);
+	text_layer_set_text_color(time_layer, GColorWhite);
+	text_layer_set_text_alignment(time_layer, GTextAlignmentCenter);
 	// Add to parent layer
-	layer_add_child(window_layer, text_layer_get_layer(s_time_layer));
+	layer_add_child(window_layer, text_layer_get_layer(time_layer));
 }
 
 static void initialize_loading(Layer *window_layer) {
-	s_loading_text = text_layer_create(GRect(0, 80, SCREEN_WIDTH, LOADING_TEXT_HEIGHT));
-	text_layer_set_font(s_loading_text, s_text_font);
-	text_layer_set_text_color(s_loading_text, GColorWhite);
-	text_layer_set_background_color(s_loading_text, GColorClear);
-	text_layer_set_text_alignment(s_loading_text, GTextAlignmentCenter);
-	text_layer_set_text(s_loading_text, LOADING_TEXT);
+	loading_text = text_layer_create(GRect(0, 80, SCREEN_WIDTH, LOADING_TEXT_HEIGHT));
+	text_layer_set_font(loading_text, text_font);
+	text_layer_set_text_color(loading_text, GColorWhite);
+	text_layer_set_background_color(loading_text, GColorClear);
+	text_layer_set_text_alignment(loading_text, GTextAlignmentCenter);
+	text_layer_set_text(loading_text, LOADING_TEXT);
 	// Add to parent layer
-	layer_add_child(window_layer, text_layer_get_layer(s_loading_text));
+	layer_add_child(window_layer, text_layer_get_layer(loading_text));
 }
 
 static void hide_loading() {
-	layer_set_hidden((Layer *) s_loading_text, true);
+	layer_set_hidden((Layer *) loading_text, true);
 }
 
 static BitmapLayer * get_icon_layer(int x, int y, int size) {
@@ -102,8 +102,8 @@ static BitmapLayer * get_icon_layer(int x, int y, int size) {
 }
 
 static void initialize_icon(Layer *window_layer, int x, int y, int position) {
-	s_icons[position] = get_icon_layer(x, y, ICON_SIZE);
-	layer_add_child(window_layer, bitmap_layer_get_layer(s_icons[position]));
+	icons[position] = get_icon_layer(x, y, ICON_SIZE);
+	layer_add_child(window_layer, bitmap_layer_get_layer(icons[position]));
 }
 
 static void initialize_icons(Layer *window_layer) {
@@ -114,11 +114,11 @@ static void initialize_icons(Layer *window_layer) {
 }
 
 static void initialize_text(Layer *window_layer, int x, int y, int position) {
-	s_texts[position] = text_layer_create(GRect(x, y, SCREEN_WIDTH / 2, TEXT_HEIGHT));
-	text_layer_set_font(s_texts[position], s_text_font);
-	text_layer_set_background_color(s_texts[position], GColorClear);
-	text_layer_set_text_alignment(s_texts[position], GTextAlignmentCenter);
-	layer_add_child(window_layer, text_layer_get_layer(s_texts[position]));
+	texts[position] = text_layer_create(GRect(x, y, SCREEN_WIDTH / 2, TEXT_HEIGHT));
+	text_layer_set_font(texts[position], text_font);
+	text_layer_set_background_color(texts[position], GColorClear);
+	text_layer_set_text_alignment(texts[position], GTextAlignmentCenter);
+	layer_add_child(window_layer, text_layer_get_layer(texts[position]));
 }
 
 /*
@@ -156,7 +156,7 @@ static void main_window_load(Window *window) {
 	initialize_header_background_layer(window_layer);
 	initialize_time_layer(window_layer);
 	// Set black background while loading
-	set_background_color(s_main_window, COLOR_BLACK);
+	set_background_color(main_window, COLOR_BLACK);
 	initialize_loading(window_layer);
 	initialize_icons(window_layer);
 	initialize_texts(window_layer);
@@ -170,7 +170,7 @@ static void main_window_load(Window *window) {
 *
 */
 static void main_window_unload(Window *window) {
-	text_layer_destroy(s_time_layer);
+	text_layer_destroy(time_layer);
 }
 
 /*
@@ -179,7 +179,7 @@ static void main_window_unload(Window *window) {
 *
 */
 static void register_window_handlers() {
-	window_set_window_handlers(s_main_window, (WindowHandlers) {
+	window_set_window_handlers(main_window, (WindowHandlers) {
 		.load = main_window_load,
 		.unload = main_window_unload
 	});
@@ -213,22 +213,22 @@ static unsigned int find_int(DictionaryIterator *iterator, const uint32_t key) {
 */
 static void inbox_received_callback(DictionaryIterator *iterator, void *context) {
 	// Set icons
-	set_icon_from_id(s_icons[0], find_string(iterator, FIRST_ICON));
-	set_icon_from_id(s_icons[1], find_string(iterator, SECOND_ICON));
-	set_icon_from_id(s_icons[2], find_string(iterator, THIRD_ICON));
-	set_icon_from_id(s_icons[3], find_string(iterator, FOURTH_ICON));
+	set_icon_from_id(icons[0], find_string(iterator, FIRST_ICON));
+	set_icon_from_id(icons[1], find_string(iterator, SECOND_ICON));
+	set_icon_from_id(icons[2], find_string(iterator, THIRD_ICON));
+	set_icon_from_id(icons[3], find_string(iterator, FOURTH_ICON));
 	// Set text colors
-	set_text_color(s_texts[0], find_int(iterator, FIRST_COLOR));
-	set_text_color(s_texts[1], find_int(iterator, SECOND_COLOR));
-	set_text_color(s_texts[2], find_int(iterator, THIRD_COLOR));
-	set_text_color(s_texts[3], find_int(iterator, FOURTH_COLOR));
+	set_text_color(texts[0], find_int(iterator, FIRST_COLOR));
+	set_text_color(texts[1], find_int(iterator, SECOND_COLOR));
+	set_text_color(texts[2], find_int(iterator, THIRD_COLOR));
+	set_text_color(texts[3], find_int(iterator, FOURTH_COLOR));
 	// Set values
-	set_text_value(s_texts[0], find_string(iterator, FIRST_VALUE));
-	set_text_value(s_texts[1], find_string(iterator, SECOND_VALUE));
-	set_text_value(s_texts[2], find_string(iterator, THIRD_VALUE));
-	set_text_value(s_texts[3], find_string(iterator, FOURTH_VALUE));
+	set_text_value(texts[0], find_string(iterator, FIRST_VALUE));
+	set_text_value(texts[1], find_string(iterator, SECOND_VALUE));
+	set_text_value(texts[2], find_string(iterator, THIRD_VALUE));
+	set_text_value(texts[3], find_string(iterator, FOURTH_VALUE));
 	// Set background color
-	set_background_color(s_main_window, find_int(iterator, BACKGROUND_COLOR));
+	set_background_color(main_window, find_int(iterator, BACKGROUND_COLOR));
 	// Check vibration
 	check_vibration(find_string(iterator, VIBRATION));
 	// Hide loading
@@ -269,7 +269,7 @@ static void init() {
 	// Set handlers to manage the elements inside the Window
 	register_window_handlers();
 	// Show the Window on the watch, with animated=true
-	window_stack_push(s_main_window, true);
+	window_stack_push(main_window, true);
 	// Register with TickTimerService
 	tick_timer_service_subscribe(MINUTE_UNIT, tick_handler);
 	// Register callbacks
@@ -279,7 +279,7 @@ static void init() {
 }
 
 static void deinit() {
-	window_destroy(s_main_window);
+	window_destroy(main_window);
 }
 
 int main(void) {
