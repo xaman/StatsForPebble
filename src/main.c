@@ -216,24 +216,24 @@ static unsigned int find_int(DictionaryIterator *iterator, const uint32_t key) {
 */
 static void inbox_received_callback(DictionaryIterator *iterator, void *context) {
 	// Set icons
-	set_icon_from_id(s_white_icons[0], s_black_icons[0], find_string(iterator, KEY_ICON_0));
-	set_icon_from_id(s_white_icons[1], s_black_icons[1], find_string(iterator, KEY_ICON_1));
-	set_icon_from_id(s_white_icons[2], s_black_icons[2], find_string(iterator, KEY_ICON_2));
-	set_icon_from_id(s_white_icons[3], s_black_icons[3], find_string(iterator, KEY_ICON_3));
+	set_icon_from_id(s_white_icons[0], s_black_icons[0], find_string(iterator, FIRST_ICON));
+	set_icon_from_id(s_white_icons[1], s_black_icons[1], find_string(iterator, SECOND_ICON));
+	set_icon_from_id(s_white_icons[2], s_black_icons[2], find_string(iterator, THIRD_ICON));
+	set_icon_from_id(s_white_icons[3], s_black_icons[3], find_string(iterator, FOURTH_ICON));
 	// Set text colors
-	set_text_color(s_texts[0], find_int(iterator, KEY_COLOR_0));
-	set_text_color(s_texts[1], find_int(iterator, KEY_COLOR_1));
-	set_text_color(s_texts[2], find_int(iterator, KEY_COLOR_2));
-	set_text_color(s_texts[3], find_int(iterator, KEY_COLOR_3));
+	set_text_color(s_texts[0], find_int(iterator, FIRST_COLOR));
+	set_text_color(s_texts[1], find_int(iterator, SECOND_COLOR));
+	set_text_color(s_texts[2], find_int(iterator, THIRD_COLOR));
+	set_text_color(s_texts[3], find_int(iterator, FOURTH_COLOR));
 	// Set values
-	set_text_value(s_texts[0], find_string(iterator, KEY_VALUE_0));
-	set_text_value(s_texts[1], find_string(iterator, KEY_VALUE_1));
-	set_text_value(s_texts[2], find_string(iterator, KEY_VALUE_2));
-	set_text_value(s_texts[3], find_string(iterator, KEY_VALUE_3));
+	set_text_value(s_texts[0], find_string(iterator, FIRST_VALUE));
+	set_text_value(s_texts[1], find_string(iterator, SECOND_VALUE));
+	set_text_value(s_texts[2], find_string(iterator, THIRD_VALUE));
+	set_text_value(s_texts[3], find_string(iterator, FOURTH_VALUE));
 	// Set background color
-	set_background_color(s_main_window, find_int(iterator, KEY_BACKGROUND_COLOR));
+	set_background_color(s_main_window, find_int(iterator, BACKGROUND_COLOR));
 	// Check vibration
-	check_vibration(find_string(iterator, KEY_VIBRATION));
+	check_vibration(find_string(iterator, VIBRATION));
 	// Hide loading
 	hide_loading();
 }

@@ -42,20 +42,20 @@ function requestStats() {
 
 function sendStatsToPebble(json) {
 	var dictionary = {
-		"KEY_ICON_0" : json.data[0].icon,
-		"KEY_COLOR_0" : convertHexToGColor(json.data[0].color),
-		"KEY_VALUE_0" : json.data[0].value,
-		"KEY_ICON_1" : json.data[1].icon,
-		"KEY_COLOR_1" : convertHexToGColor(json.data[1].color),
-		"KEY_VALUE_1" : json.data[1].value,
-		"KEY_ICON_2" : json.data[2].icon,
-		"KEY_COLOR_2" : convertHexToGColor(json.data[2].color),
-		"KEY_VALUE_2" : json.data[2].value,
-		"KEY_ICON_3" : json.data[3].icon,
-		"KEY_COLOR_3" : convertHexToGColor(json.data[3].color),
-		"KEY_VALUE_3" : json.data[3].value,
-		"KEY_BACKGROUND_COLOR" : convertHexToGColor(json.background_color),
-		"KEY_VIBRATION" : json.vibration
+		"FIRST_ICON" : json.data[0].icon,
+		"FIRST_COLOR" : convertHexToGColor(json.data[0].color),
+		"FIRST_VALUE" : json.data[0].value,
+		"SECOND_ICON" : json.data[1].icon,
+		"SECOND_COLOR" : convertHexToGColor(json.data[1].color),
+		"SECOND_VALUE" : json.data[1].value,
+		"THIRD_ICON" : json.data[2].icon,
+		"THIRD_COLOR" : convertHexToGColor(json.data[2].color),
+		"THIRD_VALUE" : json.data[2].value,
+		"FOURTH_ICON" : json.data[3].icon,
+		"FOURTH_COLOR" : convertHexToGColor(json.data[3].color),
+		"FOURTH_VALUE" : json.data[3].value,
+		"BACKGROUND_COLOR" : convertHexToGColor(json.background_color),
+		"VIBRATION" : json.vibration
 	};
 	sendDictionaryToPebble(dictionary);
 }
