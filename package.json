@@ -30,14 +30,68 @@
         "resources": {
             "media": [
                 {
-                    "file": "images/delivery.png",
-                    "name": "ICON_DELIVERY",
+                    "file": "images/performance.png",
+                    "name": "ICON_PERFORMANCE",
                     "targetPlatforms": null,
                     "type": "bitmap"
                 },
                 {
-                    "file": "images/dollar.png",
-                    "name": "ICON_DOLLAR",
+                    "file": "images/youtube.png",
+                    "name": "ICON_YOUTUBE",
+                    "targetPlatforms": null,
+                    "type": "bitmap"
+                },
+                {
+                    "file": "images/user.png",
+                    "name": "ICON_USER",
+                    "targetPlatforms": null,
+                    "type": "bitmap"
+                },
+                {
+                    "file": "images/upload.png",
+                    "name": "ICON_UPLOAD",
+                    "targetPlatforms": null,
+                    "type": "bitmap"
+                },
+                {
+                    "file": "images/twitter.png",
+                    "name": "ICON_TWITTER",
+                    "targetPlatforms": null,
+                    "type": "bitmap"
+                },
+                {
+                    "file": "images/time.png",
+                    "name": "ICON_TIME",
+                    "targetPlatforms": null,
+                    "type": "bitmap"
+                },
+                {
+                    "file": "images/star.png",
+                    "name": "ICON_STAR",
+                    "targetPlatforms": null,
+                    "type": "bitmap"
+                },
+                {
+                    "file": "images/shop.png",
+                    "name": "ICON_SHOP",
+                    "targetPlatforms": null,
+                    "type": "bitmap"
+                },
+                {
+                    "file": "images/share.png",
+                    "name": "ICON_SHARE",
+                    "targetPlatforms": null,
+                    "type": "bitmap"
+                },
+                {
+                    "file": "images/server.png",
+                    "name": "ICON_SERVER",
+                    "targetPlatforms": null,
+                    "type": "bitmap"
+                },
+                {
+                    "file": "images/percentage.png",
+                    "name": "ICON_PERCENTAGE",
                     "targetPlatforms": null,
                     "type": "bitmap"
                 },
@@ -48,8 +102,110 @@
                     "type": "bitmap"
                 },
                 {
+                    "file": "images/memory.png",
+                    "name": "ICON_MEMORY",
+                    "targetPlatforms": null,
+                    "type": "bitmap"
+                },
+                {
+                    "file": "images/location.png",
+                    "name": "ICON_LOCATION",
+                    "targetPlatforms": null,
+                    "type": "bitmap"
+                },
+                {
+                    "file": "images/like.png",
+                    "name": "ICON_LIKE",
+                    "targetPlatforms": null,
+                    "type": "bitmap"
+                },
+                {
+                    "file": "images/ios.png",
+                    "name": "ICON_IOS",
+                    "targetPlatforms": null,
+                    "type": "bitmap"
+                },
+                {
+                    "file": "images/install.png",
+                    "name": "ICON_INSTALL",
+                    "targetPlatforms": null,
+                    "type": "bitmap"
+                },
+                {
+                    "file": "images/instagram.png",
+                    "name": "ICON_INSTAGRAM",
+                    "targetPlatforms": null,
+                    "type": "bitmap"
+                },
+                {
+                    "file": "images/googleplus.png",
+                    "name": "ICON_GOOGLEPLUS",
+                    "targetPlatforms": null,
+                    "type": "bitmap"
+                },
+                {
+                    "file": "images/funnel.png",
+                    "name": "ICON_FUNNEL",
+                    "targetPlatforms": null,
+                    "type": "bitmap"
+                },
+                {
+                    "file": "images/fav.png",
+                    "name": "ICON_FAV",
+                    "targetPlatforms": null,
+                    "type": "bitmap"
+                },
+                {
+                    "file": "images/facebook.png",
+                    "name": "ICON_FACEBOOK",
+                    "targetPlatforms": null,
+                    "type": "bitmap"
+                },
+                {
+                    "file": "images/download.png",
+                    "name": "ICON_DOWNLOAD",
+                    "targetPlatforms": null,
+                    "type": "bitmap"
+                },
+                {
+                    "file": "images/dollar.png",
+                    "name": "ICON_DOLLAR",
+                    "targetPlatforms": null,
+                    "type": "bitmap"
+                },
+                {
+                    "file": "images/dislike.png",
+                    "name": "ICON_DISLIKE",
+                    "targetPlatforms": null,
+                    "type": "bitmap"
+                },
+                {
+                    "file": "images/delivery.png",
+                    "name": "ICON_DELIVERY",
+                    "targetPlatforms": null,
+                    "type": "bitmap"
+                },
+                {
+                    "file": "images/database.png",
+                    "name": "ICON_DATABASE",
+                    "targetPlatforms": null,
+                    "type": "bitmap"
+                },
+                {
+                    "file": "images/comment.png",
+                    "name": "ICON_COMMENT",
+                    "targetPlatforms": null,
+                    "type": "bitmap"
+                },
+                {
                     "file": "images/cart.png",
                     "name": "ICON_CART",
+                    "targetPlatforms": null,
+                    "type": "bitmap"
+                },
+                {
+                    "file": "images/android.png",
+                    "name": "ICON_ANDROID",
                     "targetPlatforms": null,
                     "type": "bitmap"
                 },
