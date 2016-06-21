@@ -2,14 +2,16 @@
 
 A simple Pebble watchface to show info like:
 
-* The KPIs of your project
-* The status or your servers.
+* Your server status
+* KPIs of your project
+* Social Media metrics
+* Revenues, installations...
 
 It has 4 configurable values:
 
-<img src="screenshots/screenshot.png" width="250" />
+<img src="screenshots/screenshot.png" width="200" />
 
-The shown values are loaded from a remote JSON like this:
+The values are loaded from a remote JSON like this:
 
 ~~~json
 {
@@ -17,24 +19,24 @@ The shown values are loaded from a remote JSON like this:
 	"background_color" : "#69B76B",
 	"data" : [
 		{
-			"icon" : "cart",
-			"color" : "#FFFFFF",
-			"value" : "73"
-		},
-		{
 			"icon" : "dollar",
 			"color" : "#FFFFFF",
-			"value" : "3.456"
-		},
-		{
-			"icon" : "delivery",
-			"color" : "#FFFFFF",
-			"value" : "254"
+			"value" : "3.256"
 		},
 		{
 			"icon" : "money",
+			"color" : "#FFFFFF",
+			"value" : "89,5K"
+		},
+		{
+			"icon" : "cart",
+			"color" : "#FFFFFF",
+			"value" : "142"
+		},
+		{
+			"icon" : "shop",
 			"color":"#FFFFFF",
-			"value" : "18K"
+			"value" : "947"
 		}
 	]
 }
@@ -42,12 +44,15 @@ The shown values are loaded from a remote JSON like this:
 
 As you can see:
 
-* There's a **vibration** param that supports the following modes: *none* | *short* | *large*. This params indicates if the Pebble has to vibrate in the next update of the statistics.
-* It's possible to set the **background** and the **value** colors. You can set whatever hexadecimal color, but it may be converted to the next Pebble supported color. There's a palette [here](https://developer.pebble.com/guides/tools-and-resources/color-picker/).
-* The available icons are in [this folder](resources/images). You just have to write the name of the icon to show.
+* There's a **vibration** param. It supports the following modes: *none* | *short* | *large*. This params indicates if the Pebble has to vibrate in the next update of the statistics.
+* It's possible to set the **background** and the **value** colors. You can set whatever HTML color, but it may be converted to the most similar Pebble supported color. There's a palette [here](https://developer.pebble.com/guides/tools-and-resources/color-picker/).
+* There're 30 available [icons](resources/images). You just have to set one of these names:
+
+<img src="screenshots/icons.png" width="300" />
 
 
-This is the settings screen of the Wathface:
+
+This is the settings screen of the watchface:
 
 <img src="screenshots/screenshot2.png" width="300" />
 
@@ -58,4 +63,11 @@ You can set:
 
 ### Examples
 
-<img src="screenshots/screenshot3.png" width="250" />
+<img src="screenshots/screenshot3.png" width="200" />
+<img src="screenshots/screenshot4.png" width="200" />
+<img src="screenshots/screenshot5.png" width="200" />
+<img src="screenshots/screenshot6.png" width="200" />
+<img src="screenshots/screenshot7.png" width="200" />
+
+
+The icons are designed by Freepik and distributed by [Flaticon](http://www.flaticon.com/). I just downloaded and updated them to the Pebble.
