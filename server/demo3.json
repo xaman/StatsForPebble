@@ -1,0 +1,26 @@
+{
+	"vibration" : "short",
+	"background_color" : "#AAAAAA",
+	"data" : [
+		{
+			"icon" : "server",
+			"color" : "#AA0000",
+			"value" : "PRE"
+		},
+		{
+			"icon" : "server",
+			"color" : "#005500",
+			"value" : "PRO"
+		},
+		{
+			"icon" : "server",
+			"color" : "#AA0000",
+			"value" : "TEST"
+		},
+		{
+			"icon" : "server",
+			"color":"#005500",
+			"value" : "DB"
+		}
+	]
+}

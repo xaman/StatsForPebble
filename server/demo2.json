@@ -1,26 +1,26 @@
 {
 	"vibration" : "short",
-	"background_color" : "#00AAFF",
+	"background_color" : "#AAAAAA",
 	"data" : [
 		{
-			"icon" : "cart",
-			"color" : "#00AA55",
-			"value" : "84"
+			"icon" : "memory",
+			"color" : "#000000",
+			"value" : "25%"
 		},
 		{
-			"icon" : "dollar",
-			"color" : "#FF0000",
-			"value" : "5.328"
+			"icon" : "database",
+			"color" : "#000000",
+			"value" : "70%"
 		},
 		{
-			"icon" : "delivery",
-			"color" : "#FF5500",
-			"value" : "358"
+			"icon" : "server",
+			"color" : "#000000",
+			"value" : "2,5GB"
 		},
 		{
-			"icon" : "money",
+			"icon" : "performance",
 			"color":"#000000",
-			"value" : "23,2K"
+			"value" : "97%"
 		}
 	]
 }

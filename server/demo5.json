@@ -1,0 +1,26 @@
+{
+	"vibration" : "short",
+	"background_color" : "#0055FF",
+	"data" : [
+		{
+			"icon" : "android",
+			"color" : "#FFFFFF",
+			"value" : "134"
+		},
+		{
+			"icon" : "shop",
+			"color" : "#FFFFFF",
+			"value" : "245"
+		},
+		{
+			"icon" : "ios",
+			"color" : "#FFFFFF",
+			"value" : "369"
+		},
+		{
+			"icon" : "money",
+			"color":"#FFFFFF",
+			"value" : "17.2K"
+		}
+	]
+}

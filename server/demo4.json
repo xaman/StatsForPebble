@@ -1,0 +1,26 @@
+{
+	"vibration" : "short",
+	"background_color" : "#AA0055",
+	"data" : [
+		{
+			"icon" : "instagram",
+			"color" : "#FFFFFF",
+			"value" : "103.2K"
+		},
+		{
+			"icon" : "twitter",
+			"color" : "#FFFFFF",
+			"value" : "89.5K"
+		},
+		{
+			"icon" : "youtube",
+			"color" : "#FFFFFF",
+			"value" : "1.2M"
+		},
+		{
+			"icon" : "facebook",
+			"color":"#FFFFFF",
+			"value" : "23.4K"
+		}
+	]
+}
