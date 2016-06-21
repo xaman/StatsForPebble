@@ -7,7 +7,7 @@ A simple Pebble watchface to show info like:
 
 It has 4 configurable values:
 
-![Screenshot](screenshots/screenshot.png)
+<img src="screenshots/screenshot.png" width="250" />
 
 The shown values are loaded from a remote JSON like this:
 
@@ -49,7 +49,7 @@ As you can see:
 
 This is the settings screen of the Wathface:
 
-![Screenshot](screenshots/screenshot2.png)
+<img src="screenshots/screenshot2.png" width="300" />
 
 You can set:
 
@@ -58,4 +58,4 @@ You can set:
 
 ### Examples
 
-![Screenshot](screenshots/screenshot3.png)
+<img src="screenshots/screenshot3.png" width="250" />
