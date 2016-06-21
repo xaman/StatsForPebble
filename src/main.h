@@ -9,7 +9,7 @@
 #define TIME_LAYER_HEIGHT 40
 #define HEADER_BACKGROUND_HEIGHT 40
 #define ICON_SIZE 36
-#define TEXT_HEIGHT 20
+#define TEXT_HEIGHT 30
 #define MAX_STATS 4
 #define LOADING_TEXT_HEIGHT 40
 #define LOADING_TEXT "Loading..."
