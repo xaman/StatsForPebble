@@ -1,6 +1,6 @@
 # Stats for Pebble
 
-[![Download link](https://img.shields.io/badge/download-.pbw-green.svg)](build/Stats.pbw)
+[![Download link](https://img.shields.io/badge/download-.pbw-green.svg)](https://github.com/xaman/StatsForPebble/raw/master/build/Stats.pbw)
 
 A simple Pebble watchface to show info like:
 
