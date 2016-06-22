@@ -1,5 +1,7 @@
 # Stats for Pebble
 
+[![Download link](https://img.shields.io/badge/download-.pbw-green.svg)](build/Stats.pbw)
+
 A simple Pebble watchface to show info like:
 
 * Your server status
@@ -61,6 +63,15 @@ You can set:
 * The **url** of the JSON that contains the configuration of the watchface.
 * The refresh **interval** in minutes (30 by default).
 
+### How to install it
+
+The watchface isn't in the Pebble Store by now. There are two options:
+
+* Clone the project and compile it by yourself.
+* Download the latest build from [here](build/).
+
+To install a **.pbw** in your Pebble, you just need to open it from the official Pebble app in your smartphone.
+
 ### Examples
 
 <img src="screenshots/screenshot3.png" width="200" />
@@ -70,4 +81,4 @@ You can set:
 <img src="screenshots/screenshot7.png" width="200" />
 
 
-The icons are designed by Freepik and distributed by [Flaticon](http://www.flaticon.com/). I just downloaded and updated them to the Pebble.
+The icons are designed by Freepik and distributed by [Flaticon](http://www.flaticon.com/). I just downloaded and updated them to Pebble.
